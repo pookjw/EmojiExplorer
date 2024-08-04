@@ -95,14 +95,14 @@ fileprivate func emojiStringsWithCategoryIdentifier(identifier: String) -> [[Str
     let imp_string = method_getImplementation(method_string)
     let func_string = unsafeBitCast(imp_string, to: (@convention(c) (AnyObject, Selector) -> NSString).self)
     
-    let cmd_skinToneSpecifiers = Selector(("_skinToneVariantStrings"))
-    let method_skinToneSpecifiers = class_getInstanceMethod(EMFEmojiToken, cmd_skinToneSpecifiers)!
-    let imp_skinToneSpecifiers = method_getImplementation(method_skinToneSpecifiers)
-    let func_skinToneSpecifiers = unsafeBitCast(imp_skinToneSpecifiers, to: (@convention(c) (AnyObject, Selector) -> [NSString]).self)
+    let cmd_skinToneVariantStrings = Selector(("_skinToneVariantStrings"))
+    let method_skinToneVariantStrings = class_getInstanceMethod(EMFEmojiToken, cmd_skinToneVariantStrings)!
+    let imp_skinToneVariantStrings = method_getImplementation(method_skinToneVariantStrings)
+    let func_skinToneVariantStrings = unsafeBitCast(imp_skinToneVariantStrings, to: (@convention(c) (AnyObject, Selector) -> [NSString]).self)
     
     let results: [[String]] = emojiTokens
         .map { emojiToken in
-            let _skinToneVariantStrings = func_skinToneSpecifiers(emojiToken, cmd_skinToneSpecifiers)
+            let _skinToneVariantStrings = func_skinToneVariantStrings(emojiToken, cmd_skinToneVariantStrings)
            
             if _skinToneVariantStrings.isEmpty {
                 return [func_string(emojiToken, cmd_string) as String]

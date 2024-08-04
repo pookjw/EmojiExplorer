@@ -7,7 +7,7 @@
 
 import SwiftUI
 import ObjectiveC
-import os
+import Darwin
 
 struct ContentView: View {
     var body: some View {
